@@ -11,7 +11,7 @@
 	let { children } = $props()
 
 	function guard() {
-		if ((!user.isLoggedIn || user.expires_at < Date.now()) && location.pathname !== "/login") {
+		if ((!user.isLoggedIn || user.expires_at < Date.now()) && location.pathname !== "/login" && location.pathname !== "/") {
 			user.logout()
 			goto("/login")
 		}
