@@ -10,7 +10,7 @@
 
 	let isApple = $state(true)
 	let isLoading = $state(true)
-	let status = $state("idle")
+	let status = $state("term_select")
 	let terms = $state<any[]>()
 	let selectedTerm = $state()
 	let errorMessage = $state("")
@@ -81,6 +81,12 @@
 		URL.revokeObjectURL(url);
 	}
 
+	$effect(() => {
+		if (selectedTerm) {
+			status = "term_select"
+		}
+	})
+
 	onMount(() => {
 		isApple = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
 		getTermList(user.access_token).then((t) => {
@@ -116,27 +122,24 @@
 		<h1 class="font-manrope font-extrabold text-[2.3rem] mb-4">Sync Schedule</h1>
 		<p class="font-inter text-base-content/60 text-[1rem]">Sync your schedule with your calendar app in less than a minute.</p>
 	</header>
-	{#if status === "idle"}
-		<div class="card flex flex-col items-center bg-base-200 border border-base-300 w-full p-5 shadow-2xl">
-			<fieldset class="fieldset w-fit flex flex-col items-center mt-5 mb-10">
-				<legend class="fieldset-legend text-start w-1/2 font-manrope">Select term</legend>
-				<select class="select w-fit shadow-2xl" bind:value={selectedTerm}>
-					{#each terms as term}
-						<option value={term.hoc_ky} >{extractTerm(term)}</option>
-					{/each}
-				</select>
-			</fieldset>
-			<button onclick={handleGenerateICS} disabled={isLoading}
-				class="btn btn-primary rounded-md w-3/4 shadow-2xl text-lg lg:text-[1.2rem] p-5 mb-10">
-				{#if isLoading}
-					<span class="loading loading-spinner"></span>
-				{:else}
-					Generate .ics file
-				{/if}
-			</button>
-		</div>
-	{:else}
-		<div class="card flex flex-col items-center bg-base-200 border border-base-300 w-full p-5 shadow-2xl">
+	<div class="card flex flex-col items-center bg-base-200 border border-base-300 w-full p-5 shadow-2xl">
+		<fieldset class="fieldset w-fit flex flex-col items-center mt-5 mb-10">
+			<legend class="fieldset-legend text-start w-1/2 font-manrope">Select term</legend>
+			<select class="select w-fit shadow-2xl" bind:value={selectedTerm}>
+				{#each terms as term}
+					<option value={term.hoc_ky} >{extractTerm(term)}</option>
+				{/each}
+			</select>
+		</fieldset>
+		<button onclick={handleGenerateICS} disabled={isLoading || status === "ics_file_ready"}
+			class="btn btn-primary rounded-md w-3/4 shadow-xl text-lg lg:text-[1.2rem] p-5 mb-10">
+			{#if isLoading}
+				<span class="loading loading-spinner"></span>
+			{:else}
+				Generate .ics file
+			{/if}
+		</button>
+	{#if status === "ics_file_ready"}
 			<div class="p-8 text-center">
 				<h1 class="font-manrope font-bold text-2xl mb-4">Your .ics file is ready</h1>
 				<p class="text-base-content/60 text-lg">Select how you want to add it to your calendar.</p>
@@ -153,14 +156,14 @@
 			</div>
 			{#if isApple}
 				<div class="tooltip tooltip-open w-full m-0 p-0 flex justify-center" data-tip="Only works on Safari">
-  				<button class="btn font-inter text-sm flex items-center justify-center w-full lg:w-3/5 bg-primary rounded-md py-2 mb-3 hover:bg-primary/60" onclick={handleAppleImport} disabled={isLoading}>
-  					{#if isLoading}
-  						<span class="loading loading-spinner"></span>
-  					{:else}
-  						<AppleIcon/>
-  						Import to Apple Calendar
-  					{/if}
-  				</button>
+					<button class="btn font-inter text-sm flex items-center justify-center w-full lg:w-3/5 bg-primary rounded-md py-2 mb-3 hover:bg-primary/60" onclick={handleAppleImport} disabled={isLoading}>
+						{#if isLoading}
+							<span class="loading loading-spinner"></span>
+						{:else}
+							<AppleIcon/>
+							Import to Apple Calendar
+						{/if}
+					</button>
 				</div>
 			{:else}
 				<button class="btn font-inter text-sm flex items-center justify-center w-full lg:w-3/5 bg-primary rounded-md py-2 mb-3 hover:bg-primary/60" onclick={handleGoogleImport} disabled={isLoading}>
@@ -176,8 +179,8 @@
 				onclick={handleDownload}>
 				Just download .ics file
 			</button>
-		</div>
 	{/if}
+	</div>
 </div>
 
 

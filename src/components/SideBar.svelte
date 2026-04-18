@@ -3,6 +3,7 @@
 	import Home from "./Home.svelte";
 	import LogoutConfirmModal from "./modals/LogoutConfirmModal.svelte";
 	import User from "./User.svelte";
+	import Footer from "./Footer.svelte";
 
 	let { children } = $props()
 
@@ -12,8 +13,11 @@
 
 <div class="drawer lg:drawer-open">
   <input id="drawer" type="checkbox" class="drawer-toggle" bind:checked={app.drawerOpen}/>
-  <div class="drawer-content flex flex-col items-center justify-center h-screen lg:h-[92vh] ">
-		{@render children()}
+  <div class="drawer-content flex flex-col items-center h-screen lg:h-[92vh] overflow-y-auto">
+		<div class="flex-1 w-full flex flex-col items-center justify-center">
+			{@render children()}
+		</div>
+		<Footer />
   </div>
   <div class="drawer-side lg:h-[92vh] overflow-visible">
     <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>

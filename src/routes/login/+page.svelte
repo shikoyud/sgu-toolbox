@@ -131,14 +131,14 @@
 			No. Your credentials are not stored on any server. They are sent directly to the school’s API.
 		</div>
 	</details>
-	<!-- <details class="collapse bg-base-100 border border-base-300" name="login-accordion"> -->
-	<!-- 	<summary class="collapse-title font-semibold font-manrope text-primary-content"> -->
-	<!-- 		How can I verify this is safe? -->
-	<!-- 	</summary> -->
-	<!-- 	<div class="collapse-content text-sm font-inter"> -->
-	<!-- 		You can inspect the source code on GitHub. There is no no tracking, and no code that sends your credentials anywhere except the official school API. -->
-	<!-- 	</div> -->
-	<!-- </details> -->
+	<details class="collapse bg-base-100 border border-base-300" name="login-accordion">
+		<summary class="collapse-title font-semibold font-manrope text-primary-content">
+			How can I verify this is safe?
+		</summary>
+		<div class="collapse-content text-sm font-inter">
+			You can inspect the <a class="link link-primary" href="https://github.com/shikoyud/sgu-toolbox">source code</a> on GitHub. There is no no tracking, and no code that sends your credentials anywhere except the official school API.
+		</div>
+	</details>
 </div>
 
 <style>
