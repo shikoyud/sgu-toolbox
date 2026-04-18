@@ -1,0 +1,2 @@
+<svg class="fill-current w-7 h-7 mr-2" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><g stroke-width="0"></g><g stroke-linecap="round" stroke-linejoin="round"></g><g><path d="M469.3,85.3H42.7C19.1,85.3,0,104.5,0,128v21.3h512V128C512,104.5,492.9,85.3,469.3,85.3z M213.3,42.7h85.3V64h42.7V42.7 c0-23.5-19.1-42.7-42.7-42.7h-85.3c-23.5,0-42.7,19.1-42.7,42.7V64h42.7V42.7z M0,426.7c0,23.5,19.1,42.7,42.7,42.7h426.7 c23.5,0,42.7-19.1,42.7-42.7v-21.3H0V426.7z M0,362.7h512V192H0V362.7z"></path></g>
+</svg>

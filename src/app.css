@@ -1,0 +1,8 @@
+@import "tailwindcss";
+ @plugin "daisyui" {
+   themes: nord, business --default
+ }
+@theme {
+	--font-manrope: Manrope, sans-serif;
+	--font-inter: Inter, sans-serif;
+}

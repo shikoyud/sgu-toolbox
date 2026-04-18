@@ -1,11 +1,34 @@
 <script lang="ts">
+	import "../app.css";
 	import favicon from '$lib/assets/favicon.svg';
+	import { afterNavigate, goto } from "$app/navigation";
+	import { onMount } from "svelte";
+	import NavBar from "$components/NavBar.svelte";
+	import SideBar from "$components/SideBar.svelte";
+	import { user } from "$lib/user.svelte";
+	import { app } from "$lib/app.svelte";
 
-	let { children } = $props();
+	let { children } = $props()
+
+	function guard() {
+		if ((!user.isLoggedIn || user.expires_at < Date.now()) && location.pathname !== "/login") {
+			user.logout()
+			goto("/login")
+		}
+	}
+
+	onMount(() => {
+		app.refresh()
+		user.refresh()
+		guard()
+	})
+
+	afterNavigate(guard)
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-{@render children()}
+<NavBar/>
+<SideBar>{@render children()}</SideBar>
