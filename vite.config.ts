@@ -7,9 +7,4 @@ export default defineConfig({
 		sveltekit(),
 		tailwindcss()
 	],
-	server: {
-		allowedHosts: [
-			"repairs-remain-prince-sending.trycloudflare.com"
-		]
-	}
 });

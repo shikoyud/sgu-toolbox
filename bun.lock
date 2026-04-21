@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "schedule2calendar",
+      "name": "sgu-toolbox",
       "dependencies": {
         "@tailwindcss/vite": "^4.2.2",
         "ics": "^3.11.0",
