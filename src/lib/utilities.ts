@@ -1,5 +1,18 @@
 import { createEvents } from "ics"
 
+export function extractSurveyItem(surveyItems: any) {
+	let item_list = []
+	for (const item of surveyItems) {
+		if (item.is_tra_loi) continue
+		const id = item.id_ds_doi_tuong
+		const item_id = item.ma_doi_tuong
+		const item_name = item.ten_doi_tuong
+		const teacher_name = item.ten_bo_sung
+		item_list.push({id, item_id, item_name, teacher_name})
+	}
+	return item_list
+}
+
 export function extractTerm(data: any) {
 	const term = data.hoc_ky
 	const year = Math.trunc(term / 10)

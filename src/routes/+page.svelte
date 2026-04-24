@@ -26,14 +26,14 @@
 			<p class="text-base-content/60">Draft your ideal timetable and check for overlaps before registration starts.</p>
 		</div>
 
-		<div class="relative overflow-hidden rounded-3xl bg-base-200 border border-base-300 p-8 md:col-span-2">
+		<a href="/app/auto-survey" class="relative overflow-hidden rounded-3xl bg-primary border border-base-300 p-8 md:col-span-2">
 			<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
 				<div>
-					<span class="badge badge-sm badge-outline opacity-50 mb-4">Coming Soon</span>
+					<span class="badge badge-sm bg-white/20 border-none text-white mb-4">Available Now</span>
 					<h2 class="text-2xl font-bold mb-2">Auto Lecturer Survey</h2>
-					<p class="text-base-content/60 text-balance">Skip the tedious form-filling. Complete all lecturer evaluations with a single click.</p>
+					<p class="opacity-90 text-balance">Skip the tedious form-filling. Complete all lecturer evaluations with a single click.</p>
 				</div>
 			</div>
-		</div>
+		</a>
 	</div>
 </div>
