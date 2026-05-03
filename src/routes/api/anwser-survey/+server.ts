@@ -3,7 +3,7 @@ import { json } from "@sveltejs/kit";
 export async function POST({ request }: { request: Request }) {
     const { access_token, answer } = await request.json()
 
-    const response = await fetch("https://thongtindaotao.sgu.edu.vn/public/api/zms/w-luutraloidanhgia", {
+    const response = await fetch("https://thongtindaotao.sgu.edu.vn/api/zms/w-luutraloidanhgia", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
