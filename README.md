@@ -2,6 +2,8 @@
 
 A small SvelteKit toolbox for Sai Gon University students.
 
+> **Disclaimer:** This project is not an official service and is not affiliated with the school.
+
 ## Features
 
 - Log in with the same account used for the official SGU portal.
