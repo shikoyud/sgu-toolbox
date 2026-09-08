@@ -56,7 +56,7 @@ function extractDateTime(data: any) {
 	let endMonth = Number.parseInt(endDateStr[1])
 	let endDay = Number.parseInt(endDateStr[0])
 	let endHour = Number.parseInt(trimmedEndTime[0])
-	let endMinute = Number.parseInt(trimmedEndTime[1]) + 50
+	let endMinute = Number.parseInt(trimmedEndTime[1])
 
 	const startDate = [startYear, startMonth, startDay]
 
